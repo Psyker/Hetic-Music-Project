@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Welcome to the Video:list page</h1>
+
+
+    <div>
+        <a href="{% if video.id == 1 %}{{ path('homepage') }}{% else %}{{ path('list', {'id': video.id - 1}) }}{% endif %}">
+            {% if video.id == 1 %}Accueil{% else %}Previous Video{% endif %}
+        </a>
+        <h1>Video</h1>
+        {{ video.name }}
+        <br>
+        {{ video.description }}
+        <br>
+        {{ video.anneeRealisation }}
+        <br>
+        {{ video.urlVideo }}
+        <br>
+        {{ video.realisateur }}
+
+        {% for sound in video.sounds %}
+            <h1>Sons :</h1>
+            {{ sound.name }}
+            <br>
+            {{ sound.compositeur }}
+            <br>
+            {{ sound.urlSound }}
+            <br>
+            {{ sound.realisationAnnee }}
+            <br>
+            <a href="{{ path('list', {'id': video.id + 1}) }}">Next Video</a>
+        {% endfor %}
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+

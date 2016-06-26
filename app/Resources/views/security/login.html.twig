@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if error %}{{ error.message }}{% endif %}
+
+    <div class="container margin">
+        <div class="col-md-4"></div>
+        <form class="form-signin col-md-4" method="post" action="{{ path('login') }}">
+            <h2 class="form-signin-heading">Log in</h2>
+            <fieldset class="form-group">
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" name="_username" value="{{ last_username }}" class="form-control" placeholder="Username" required autofocus>
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="_password" id="inputPassword" class="form-control" placeholder="Password" required>
+            </fieldset>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
+        </form>
+        <div class="col-md-4"></div>
+    </div>
+
+{% endblock %}
