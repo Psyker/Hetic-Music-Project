@@ -4,12 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Video
  *
  * @ORM\Table(name="video")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\VideoRepository")
+ * @Vich\Uploadable
  */
 class Video
 {
@@ -65,6 +68,39 @@ class Video
      */
     private $annee_realisation;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlVideo", type="string", length=100)
+     */
+    private $urlVideo;
+
+    /**
+     * @Vich\UploadableField(mapping="product_video", fileNameProperty="urlVideo")
+     * @var File
+     */
+    private $videoFile;
+
+
+
+    /**
+     * @return File
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
+     *
+     */
+    public function setVideoFile(File $video = null)
+    {
+        $this->videoFile = $video;
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getVideoFile()
+    {
+        return $this->videoFile;
+    }
 
 
     /**
@@ -78,12 +114,6 @@ class Video
     }
 
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="urlVideo", type="string", length=100)
-     */
-    private $urlVideo;
 
     /**
      * Set name

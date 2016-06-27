@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,7 +28,7 @@ class VideoType extends AbstractType
             ->add('description', TextType::class)
             ->add('realisateur', TextType::class)
             ->add('annee_realisation', IntegerType::class)
-            ->add('urlVideo', TextType::class)
+            ->add('urlVideo', FileType::class)
             ->add('sounds', EntityType::class, array(
                 'multiple'=> true,
                 'expanded' => true,

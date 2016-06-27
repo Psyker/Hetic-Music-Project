@@ -1,5 +1,17 @@
 {% extends 'admin/base.html.twig' %}
 
 {% block body %}
-<h1>Bonjour dieu</h1>
+    <div class="container margin">
+        <div class="jumbotron text-center">
+            <div class="container">
+                <h1>Bonjour Maître Suprême !</h1>
+                <p>Alors la tu peux administrer tes vidéos et tes bandes sons</p>
+                <p><a href="{{ path('videosList') }}" class="btn btn-lg btn-primary">Videos</a>
+                    <a href="{{ path('soundsList') }}" class=" btn btn-lg btn-primary">Musiques</a></p>
+                <p>Et la bah encore mieux parce que tu peux ajouter des vidéos et des sons </p>
+                <p><a href="{{ path('addVideo') }}" class="btn btn-lg btn-primary">Ajouter une vidéo</a>
+                    <a href="" class=" btn btn-lg btn-primary">Ajouter une musique</a></p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

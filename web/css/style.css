@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Raleway;
+    src: url("../font/raleway-dots/RalewayDots-Regular.ttf");
+}
+@font-face {
+    font-family: Source Sans Pro;
+    src: url("../font/Source_Sans_Pro/SourceSansPro-Light.ttf");
+}
+
+body{
+    background-color: #0f0f0f;
+}
+
+nav{
+    color: white;
+}
+
+h1{
+    letter-spacing: 11px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 82px;
+}
+
+p{
+    font-size: 22px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.cover-heading{
+    margin-top: 150px;
+}
+
+.custom-button{
+    background-color: #0f0f0f;
+    border-radius: 20px;
+    border: 1px solid white;
+    padding:5px 25px ;
+}

@@ -102,10 +102,10 @@ class AdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
-            $this->addFlash('success', "<strong>Congratulations !</strong><br>Your video has been successfully added.");
+            $this->addFlash('success', "Congratulations !Your video has been successfully added.");
             return $this->redirectToRoute('videosList');
         }
-        return $this->render('admin/addvideo.html.twig', array('form' => $form->createView()));
+        return $this->render('admin/videos/addvideo.html.twig', array('form' => $form->createView()));
     }
 
     /**
