@@ -1,0 +1,17 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <div class="container margin">
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.realisateur) }}
+    {{ form_row(form.urlVideo) }}
+    {{ form_row(form.description) }}
+    <button class="btn btn-primary" type="submit">Submit</button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+
+

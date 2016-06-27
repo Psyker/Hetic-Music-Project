@@ -77,29 +77,6 @@ class Video
         return $this->id;
     }
 
-    /**
-     * Set idsound
-     *
-     * @param integer $idsound
-     *
-     * @return Video
-     */
-    public function setIdsound($idsound)
-    {
-        $this->idsound = $idsound;
-
-        return $this;
-    }
-
-    /**
-     * Get idsound
-     *
-     * @return int
-     */
-    public function getIdsound()
-    {
-        return $this->idsound;
-    }
 
     /**
      * @var string
@@ -130,6 +107,11 @@ class Video
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setSounds($sounds)
+    {
+        $this->sounds = $sounds;
     }
 
     /**

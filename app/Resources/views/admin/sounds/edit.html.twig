@@ -1,0 +1,28 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <div class="container margin">
+        <form>
+            <fieldset class="form-group">
+                <label for="formGroupExampleInput">Titre de la musique</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" value="{{ sound.name }}">
+
+                <label for="formGroupExampleInput2">Compositeur</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" value="{{ sound.compositeur }}">
+            </fieldset>
+
+
+            <fieldset class="form-group">
+                <label for="formGroupExampleInput2">Url de la musique</label>
+                <input type="text" class="form-control" value="{{ sound.urlSound }}" id="formGroupExampleInput2" >
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="formGroupExampleInput2">Année de réalisation</label>
+                <input type="text" class="form-control" value="{{ sound.realisationAnnee }}" id="formGroupExampleInput2" placeholder="Another input">
+            </fieldset>
+            <button class="btn btn-primary" type="submit">OK</button>
+        </form>
+    </div>
+
+{% endblock %}
+

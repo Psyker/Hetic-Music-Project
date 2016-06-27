@@ -1,0 +1,27 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+        <div class="container margin">
+            <form>
+                <fieldset class="form-group">
+                    <label for="_name">Titre du film</label>
+                    <input type="text" class="form-control" id="_name" value="{{ video.name }}">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="_url">Url de la video</label>
+                    <input type="text" class="form-control" value="{{ video.urlVideo }}" id="_url" >
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="_realisateur">Bandes sons</label>
+                    <input type="text" class="form-control" value="{{ video.realisateur }}" id="_realisateur" placeholder="Another input">
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="_description">Description</label>
+                    <textarea  class="form-control"  id="_description" placeholder="Another input">{{ video.description }}</textarea>
+                </fieldset>
+                <button class="btn btn-primary" type="submit">OK</button>
+            </form>
+        </div>
+{% endblock %}
+

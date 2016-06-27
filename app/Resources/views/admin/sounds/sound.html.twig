@@ -1,0 +1,37 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container margin">
+        {% for message in app.session.flashBag.get('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titre de la musique</th>
+                <th>Vidéos associés</th>
+                <th>Compositeur</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sound in sounds %}
+                <tr>
+                    <td>{{ sound.name }}</td>
+                    <td>{% for sound in sound.videos %}{{sound.name}}{% if not loop.last %},&nbsp;{% endif %}{% endfor %}</td>
+                    <td>{{ sound.compositeur }}</td>
+                    <td>{{ sound.urlSound }}</td>
+                    <td>
+                        <a href="{{ path('editSound', {'id': sound.id}) }}" class="btn btn-primary" role="button">Editer</a>
+                        <form method="POST" action="{{ path('deletePostSound', {'id': sound.id}) }}">
+                            <button type="submit"  class="btn btn-danger" role="button">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
