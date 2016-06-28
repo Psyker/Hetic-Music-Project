@@ -4,12 +4,15 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Sound
  *
  * @ORM\Table(name="sound")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SoundRepository")
+ * @Vich\Uploadable
  */
 class Sound
 {
@@ -26,6 +29,12 @@ class Sound
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @Vich\UploadableField(mapping="product_sound", fileNameProperty="urlSound")
+     * @var File
+     */
+    private $soundFile;
 
     /**
      * @var string
@@ -52,6 +61,12 @@ class Sound
      * @ORM\Column(name="urlSound", type="string", length=100)
      */
     private $urlSound;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @var integer
@@ -82,6 +97,42 @@ class Sound
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @return Sound
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $sound
+     *
+     */
+    public function setSoundFile($sound = null)
+    {
+        $this->soundFile = $sound;
+        if($sound){
+            $this->updatedAt= new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getSoundFile()
+    {
+        return $this->soundFile;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 
     /**

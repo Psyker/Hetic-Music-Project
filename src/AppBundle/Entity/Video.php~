@@ -87,35 +87,18 @@ class Video
      */
     private $updatedAt;
 
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
 
     /**
      * @return Video
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
      *
      */
-    public function setVideoFile($video = null)
+    public function setVideoFile(File $video = null)
     {
         $this->videoFile = $video;
         if($video){
-            $this->updatedAt= new \DateTime('now');
+            $this->updatedAt = new \DateTime();
         }
-
         return $this;
     }
 
@@ -245,32 +228,5 @@ class Video
 
 
 
-
-
-
-
-
-    /**
-     * Add sound
-     *
-     * @param \AppBundle\Entity\Sound $sound
-     *
-     * @return Video
-     */
-    public function addSound(Sound $sound)
-    {
-        $this->sounds[] = $sound;
-
-        return $this;
-    }
-
-    /**
-     * Remove sound
-     *
-     * @param \AppBundle\Entity\Sound $sound
-     */
-    public function removeSound(Sound $sound)
-    {
-        $this->sounds->removeElement($sound);
-    }
 }
+

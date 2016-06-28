@@ -22,13 +22,17 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/list/{id}", name="list")
+     * @Route("/list", name="list")
      */
-    public function listAction(Video $video, Sound $sound)
+    public function listAction(Request $request)
     {
+        $videoRepository = $this->getDoctrine()->getRepository('AppBundle:Video');
+        $video = $videoRepository->findAll();
+        $soundRepository = $this->getDoctrine()->getRepository('AppBundle:Sound');
+        $sound = $soundRepository->findAll();
         return $this->render('default/list.html.twig', array(
-            'video' => $video,
-            'sound' => $sound
+            'videos' => $video,
+            'sounds' => $sound
         ));
     }
 }

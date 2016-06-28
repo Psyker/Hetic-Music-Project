@@ -4,40 +4,13 @@
 
     <h1>Welcome to the Video:list page</h1>
 
+    {% for video in videos %}
 
-    <div>
-        <a href="{% if video.id == 1 %}{{ path('homepage') }}{% else %}{{ path('list', {'id': video.id - 1}) }}{% endif %}">
-            {% if video.id == 1 %}Accueil{% else %}Previous Video{% endif %}
-        </a>
-        <h1>Video</h1>
-        {{ video.name }}
-        <br>
-        {{ video.description }}
-        <br>
-        {{ video.anneeRealisation }}
-        <br>
-        {{ video.urlVideo }}
-        <br>
-        {{ video.realisateur }}
+        <h4>{{ video.name }}</h4>
+        <img src="../../videos/products_video/{{ video.urlVideo }}" alt="">
+        <span>{% for sound in video.sounds %}{{ sound.name }}{% if not loop.last %},&nbsp;{% endif %}{% endfor %}</span>
 
-        {% for sound in video.sounds %}
-            <h1>Sons :</h1>
-            {{ sound.name }}
-            <br>
-            {{ sound.compositeur }}
-            <br>
-            {{ sound.urlSound }}
-            <br>
-            {{ sound.realisationAnnee }}
-            <br>
-            <a href="{{ path('list', {'id': video.id + 1}) }}">Next Video</a>
-        {% endfor %}
-    </div>
-
-
-
-
-
+    {% endfor %}
 
 {% endblock %}
 

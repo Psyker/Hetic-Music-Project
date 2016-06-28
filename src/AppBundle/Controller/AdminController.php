@@ -2,21 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\User;
 use AppBundle\Form\VideoType;
+use AppBundle\Form\SoundType;
 use AppBundle\Entity\Video;
 use AppBundle\Entity\Sound;
-use Symfony\Component\Form\CallbackTransformer;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Tests\Extension\Core\Type\CheckboxTypeTest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Class AdminController
@@ -98,6 +95,7 @@ class AdminController extends Controller
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
@@ -115,6 +113,27 @@ class AdminController extends Controller
     {
         $sounds = $this->getDoctrine()->getRepository('AppBundle:Sound')->findAll();
         return $this->render('admin/sounds/sound.html.twig', ['sounds' => $sounds]);
+    }
+
+    /**
+     * @Route("/sounds/add", name="addsound")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function addSound(Request $request)
+    {
+        $sound = new Sound();
+        $form = $this->createForm(SoundType::class, $sound);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($sound);
+            $em->flush();
+            $this->addFlash('success', "Congratulations ! Your sound has been successfully added.");
+            return $this->redirectToRoute('videosList');
+        }
+        return $this->render('admin/sounds/addsound.html.twig', array('form' => $form->createView()));
     }
 
     /**
