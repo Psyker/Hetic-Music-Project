@@ -17,10 +17,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Sound
 {
 
-    public function __construct() {
-        $this->sounds = new ArrayCollection();
-    }
-
     /**
      * @var int
      *
@@ -29,51 +25,49 @@ class Sound
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @Vich\UploadableField(mapping="product_sound", fileNameProperty="urlSound")
      * @var File
      */
     private $soundFile;
-
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
-
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Video", mappedBy="sounds")
      */
     private $videos;
-
     /**
      * @var string
      *
      * @ORM\Column(name="compositeur", type="string", length=50)
      */
     private $compositeur;
-
     /**
      * @var string
      *
      * @ORM\Column(name="urlSound", type="string", length=100)
      */
     private $urlSound;
-
     /**
      * @ORM\Column(type="datetime")
      * @var \DateTime
      */
     private $updatedAt;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="realisation_annee", type="integer")
      */
     private $realisation_annee;
+
+    public function __construct()
+    {
+        $this->sounds = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -83,6 +77,52 @@ class Sound
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function getSoundFile()
+    {
+        return $this->soundFile;
+    }
+
+    /**
+     * @return Sound
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $sound
+     *
+     */
+    public function setSoundFile($sound = null)
+    {
+        $this->soundFile = $sound;
+        if ($sound) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -97,52 +137,6 @@ class Sound
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @return Sound
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $sound
-     *
-     */
-    public function setSoundFile($sound = null)
-    {
-        $this->soundFile = $sound;
-        if($sound){
-            $this->updatedAt= new \DateTime('now');
-        }
-
-        return $this;
-    }
-
-    public function getSoundFile()
-    {
-        return $this->soundFile;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

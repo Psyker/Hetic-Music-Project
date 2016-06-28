@@ -16,10 +16,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Video
 {
-    public function __construct() {
-        $this->videos = new ArrayCollection();
-    }
-
     /**
      * @var int
      *
@@ -28,16 +24,12 @@ class Video
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-
-
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
-
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Sound", inversedBy="videos")
      * @ORM\JoinTable(name="video_sound",
@@ -46,46 +38,45 @@ class Video
      *      )
      */
     private $sounds;
-
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=1000)
      */
     private $description;
-
     /**
      * @var string
      *
      * @ORM\Column(name="realisateur", type="string", length=50)
      */
     private $realisateur;
-
     /**
      * @var integer
      *
      * @ORM\Column(name="annee_realisation", type="integer")
      */
     private $annee_realisation;
-
     /**
      * @var string
      *
      * @ORM\Column(name="urlVideo", type="string", length=255)
      */
     private $urlVideo;
-
     /**
      * @Vich\UploadableField(mapping="product_video", fileNameProperty="urlVideo")
      * @var File
      */
     private $videoFile;
-
     /**
      * @ORM\Column(type="datetime")
      * @var \DateTime
      */
     private $updatedAt;
+
+    public function __construct()
+    {
+        $this->videos = new ArrayCollection();
+    }
 
     /**
      * @return \DateTime
@@ -103,6 +94,13 @@ class Video
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return File
+     */
+    public function getVideoFile()
+    {
+        return $this->videoFile;
+    }
 
     /**
      * @return Video
@@ -112,21 +110,12 @@ class Video
     public function setVideoFile($video = null)
     {
         $this->videoFile = $video;
-        if($video){
-            $this->updatedAt= new \DateTime('now');
+        if ($video) {
+            $this->updatedAt = new \DateTime('now');
         }
 
         return $this;
     }
-
-    /**
-     * @return File
-     */
-    public function getVideoFile()
-    {
-        return $this->videoFile;
-    }
-
 
     /**
      * Get id
@@ -138,7 +127,15 @@ class Video
         return $this->id;
     }
 
-
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
     /**
      * Set name
@@ -155,26 +152,16 @@ class Video
     }
 
     /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function setSounds($sounds)
-    {
-        $this->sounds = $sounds;
-    }
-
-    /**
      * @return mixed
      */
     public function getSounds()
     {
         return $this->sounds;
+    }
+
+    public function setSounds($sounds)
+    {
+        $this->sounds = $sounds;
     }
 
     /**
@@ -242,12 +229,6 @@ class Video
     {
         $this->urlVideo = $urlVideo;
     }
-
-
-
-
-
-
 
 
     /**

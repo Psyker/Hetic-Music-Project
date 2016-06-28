@@ -20,11 +20,10 @@ class SoundType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('compositeur', TextType::class)
-            ->add('sound_file', FileType::class, array('label'=> 'Bande son'))
-            ->add('realisation_annee', IntegerType::class)
-        ;
+            ->add('sound_file', FileType::class, array('label' => 'Bande son'))
+            ->add('realisation_annee', IntegerType::class);
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

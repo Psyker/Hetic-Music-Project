@@ -90,7 +90,7 @@ class AdminController extends Controller
     /**
      * @Route("/video/add", name="addVideo")
      */
-    public function addVideo(Request $request)
+    public function addVideoAction(Request $request)
     {
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
@@ -120,7 +120,7 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function addSound(Request $request)
+    public function addSoundAction(Request $request)
     {
         $sound = new Sound();
         $form = $this->createForm(SoundType::class, $sound);
@@ -159,8 +159,6 @@ class AdminController extends Controller
         $this->addFlash("success", "Le son a bien été supprimée !");
         return $this->redirectToRoute("soundsList");
     }
-
-
 
 
 }

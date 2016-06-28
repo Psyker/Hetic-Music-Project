@@ -30,17 +30,16 @@ class VideoType extends AbstractType
             ->add('annee_realisation', IntegerType::class)
             ->add('video_file', FileType::class, array('label' => 'Video'))
             ->add('sounds', EntityType::class, array(
-                'multiple'=> true,
+                'multiple' => true,
                 'expanded' => true,
-                'class'=> 'AppBundle\Entity\Sound',
-                'choice_label' =>'name'
+                'class' => 'AppBundle\Entity\Sound',
+                'choice_label' => 'name'
             ));
 
 
     }
 
 
-    
     /**
      * @param OptionsResolver $resolver
      */
