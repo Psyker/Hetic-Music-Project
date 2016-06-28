@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -62,6 +63,18 @@ class Video
      * @ORM\Column(name="urlVideo", type="string", length=255)
      */
     private $urlVideo;
+
+    /**
+     * @var string
+     * @ORM\Column(name="urlVideowebm", type="string", length=255)
+     */
+    private $urlVideowebm;
+
+    /**
+     * @Vich\UploadableField(mapping="product_videowebm", fileNameProperty="urlVideowebm")
+     * @var File
+     */
+    private $videoFilewebm;
     /**
      * @Vich\UploadableField(mapping="product_video", fileNameProperty="urlVideo")
      * @var File
@@ -73,10 +86,34 @@ class Video
      */
     private $updatedAt;
 
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAtwebm;
+
     public function __construct()
     {
         $this->videos = new ArrayCollection();
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAtwebm()
+    {
+        return $this->updatedAtwebm;
+    }
+
+    /**
+     * @param \DateTime $updatedAtwebm
+     */
+    public function setUpdatedAtwebm($updatedAtwebm)
+    {
+        $this->updatedAtwebm = $updatedAtwebm;
+    }
+
+
 
     /**
      * @return \DateTime
@@ -95,6 +132,49 @@ class Video
     }
 
     /**
+     * @return string
+     */
+    public function getUrlVideoWebm()
+    {
+        return $this->urlVideowebm;
+    }
+
+    /**
+     * @param string $urlVideowebm
+     * @return Video
+     */
+    public function setUrlVideoWebm($urlVideowebm)
+    {
+        $this->urlVideowebm = $urlVideowebm;
+    }
+
+
+
+    /**
+     * @return File
+     */
+    public function getVideoFileWebm()
+    {
+        return $this->videoFilewebm;
+    }
+
+    /**
+     * @return Video
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
+     */
+    public function setVideoFilewebm($video = null)
+    {
+        if ($video) {
+            $this->videoFilewebm = $video;
+
+            if ($video instanceof UploadedFile) {
+                $this->updatedAtwebm = new \DateTime();
+            }
+        }
+        return $this;
+    }
+
+    /**
      * @return File
      */
     public function getVideoFile()
@@ -109,11 +189,13 @@ class Video
      */
     public function setVideoFile($video = null)
     {
-        $this->videoFile = $video;
         if ($video) {
-            $this->updatedAt = new \DateTime('now');
-        }
+            $this->videoFile = $video;
 
+            if ($video instanceof UploadedFile) {
+                $this->updatedAt = new \DateTime();
+            }
+        }
         return $this;
     }
 

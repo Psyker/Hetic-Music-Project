@@ -3,7 +3,6 @@
 namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\Entity\User;
 use AppBundle\Form\VideoType;
 use AppBundle\Form\SoundType;
 use AppBundle\Entity\Video;
@@ -95,7 +94,6 @@ class AdminController extends Controller
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
@@ -131,7 +129,7 @@ class AdminController extends Controller
             $em->persist($sound);
             $em->flush();
             $this->addFlash('success', "Congratulations ! Your sound has been successfully added.");
-            return $this->redirectToRoute('videosList');
+            return $this->redirectToRoute('soundsList');
         }
         return $this->render('admin/sounds/addsound.html.twig', array('form' => $form->createView()));
     }

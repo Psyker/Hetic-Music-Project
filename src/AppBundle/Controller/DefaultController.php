@@ -22,7 +22,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/list", name="list")
+     * @Route("/start", name="start")
      */
     public function listAction(Request $request)
     {
@@ -30,7 +30,7 @@ class DefaultController extends Controller
         $video = $videoRepository->findAll();
         $soundRepository = $this->getDoctrine()->getRepository('AppBundle:Sound');
         $sound = $soundRepository->findAll();
-        return $this->render('default/list.html.twig', array(
+        return $this->render('default/start.html.twig', array(
             'videos' => $video,
             'sounds' => $sound
         ));

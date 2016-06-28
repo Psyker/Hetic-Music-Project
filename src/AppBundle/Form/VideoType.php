@@ -28,7 +28,8 @@ class VideoType extends AbstractType
             ->add('description', TextType::class)
             ->add('realisateur', TextType::class)
             ->add('annee_realisation', IntegerType::class)
-            ->add('video_file', FileType::class, array('label' => 'Video'))
+            ->add('video_file', FileType::class, array('label' => 'Video Format mp4'))
+            ->add('video_filewebm', FileType::class, array('label' => 'Video Format Webm'))
             ->add('sounds', EntityType::class, array(
                 'multiple' => true,
                 'expanded' => true,
