@@ -78,19 +78,19 @@ vich_uploader:
             delete_on_remove:   true
         product_thumbnail:
             uri_prefix:         /video/products_thumbnail
-            upload_destination: /Users/Bourgoin/Documents/MyProject/Symfony_project_hetic/web/videos/products_thumbnail
+            upload_destination: "%kernel.root_dir%/../web/videos/products_thumbnail"
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         product_videowebm:
             uri_prefix:         /videos/products_videowebm
-            upload_destination: /Users/Bourgoin/Documents/MyProject/Symfony_project_hetic/web/videos/products_videowebm
+            upload_destination: "%kernel.root_dir%/../web/videos/products_videowebm"
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
         product_sound:
             uri_prefix:         /sounds/products_sound
-            upload_destination: /Users/Bourgoin/Documents/MyProject/Symfony_project_hetic/web/videos/products_sounds
+            upload_destination: "%kernel.root_dir%/../web/videos/products_sounds"
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
