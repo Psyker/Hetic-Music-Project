@@ -23,8 +23,6 @@ class AuthController extends Controller
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        $thug = $this->addFlash( 'success',"Bonjour Professeur !");
-
         return $this->render(
             'security/login.html.twig',
             array(

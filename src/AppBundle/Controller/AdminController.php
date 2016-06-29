@@ -80,8 +80,7 @@ class AdminController extends Controller
         $video->setName($request->get('name'));
         $video->setDescription($request->get('description'));
         $video->setRealisateur($request->get('realisateur'));
-        $video->setUrlVideo($request->get('url'));
-
+        $video->setAnneeRealisation('annee_realisation');
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('videosList', ['video' => $video]);
     }
@@ -140,8 +139,28 @@ class AdminController extends Controller
      */
     public function editSoundAction(Request $request, Sound $sound)
     {
-        if (!$sound) throw $this->createNotFoundException('Le projet n\'a pas été trouvé');
+        if (!$sound) throw $this->createNotFoundException('La bande son n\'a pas été trouvée');
         return $this->render('admin/sounds/edit.html.twig', ['sound' => $sound]);
+    }
+
+    /**
+     * @param Request $request
+     * @param Sound $sound
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/sound/edit/{id}" , name="editPostSound")
+     * @Method({"POST"})
+     */
+    public function editPostSoundAction(Request $request, Sound $sound)
+    {
+        if (!$sound) throw $this->createNotFoundException('La bande son n\'a pas été trouvée');
+        $sound->setName($request->get('name'));
+        $sound->setCompositeur($request->get('compositeur'));
+        $sound->setRealisationAnnee($request->get('realisation_annee'));
+
+
+        $this->getDoctrine()->getManager()->flush();
+        return $this->redirectToRoute('soundsList', ['sound' => $sound]);
+
     }
 
     /**

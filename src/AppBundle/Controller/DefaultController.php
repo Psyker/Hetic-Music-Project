@@ -24,7 +24,7 @@ class DefaultController extends Controller
     /**
      * @Route("/start", name="start")
      */
-    public function listAction(Request $request)
+    public function startAction(Request $request)
     {
         $videoRepository = $this->getDoctrine()->getRepository('AppBundle:Video');
         $video = $videoRepository->findAll();
@@ -37,7 +37,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route(/start/extrait/{id}", name="startextrait")
+     * @Route("/start/extrait/{id}", name="startExtrait")
      */
     public function showVideoAction(Request $request, Video $video, Sound $sound)
     {

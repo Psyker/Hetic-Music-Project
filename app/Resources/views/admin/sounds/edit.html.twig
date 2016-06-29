@@ -4,21 +4,16 @@
     <div class="container margin">
         <form>
             <fieldset class="form-group">
-                <label for="formGroupExampleInput">Titre de la musique</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" value="{{ sound.name }}">
-
-                <label for="formGroupExampleInput2">Compositeur</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" value="{{ sound.compositeur }}">
-            </fieldset>
-
-
-            <fieldset class="form-group">
-                <label for="formGroupExampleInput2">Url de la musique</label>
-                <input type="text" class="form-control" value="{{ sound.urlSound }}" id="formGroupExampleInput2" >
+                <label for="_name">Titre de la musique</label>
+                <input type="text" class="form-control" id="_name" value="{{ sound.name }}">
             </fieldset>
             <fieldset class="form-group">
-                <label for="formGroupExampleInput2">Année de réalisation</label>
-                <input type="text" class="form-control" value="{{ sound.realisationAnnee }}" id="formGroupExampleInput2" placeholder="Another input">
+                <label for="_compositeur">Compositeur</label>
+                <input type="text" class="form-control" id="_compositeur" value="{{ sound.compositeur }}">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="_realisation_annee">Année de réalisation</label>
+                <input type="text" class="form-control" value="{{ sound.realisationAnnee }}" id="_realisation_annee" placeholder="Another input">
             </fieldset>
             <button class="btn btn-primary" type="submit">OK</button>
         </form>
