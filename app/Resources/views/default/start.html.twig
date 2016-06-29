@@ -2,14 +2,17 @@
 
 {% block body %}
 
-    <h1>Welcome to the Video:list page</h1>
+    <div class="site-inner-wrapper">
+            <div class="inner cover">
+                    <p class="order">Choisissez un extrait et jouez les<br> différentes bandes sonores</p>
 
-    {% for video in videos %}
-        <h4>{{ video.name }}</h4>
-        <img src="../../videos/products_video/{{ video.urlVideo }}" alt="">
-        <span>{% for sound in video.sounds %}{{ sound.name }}{% if not loop.last %},&nbsp;{% endif %}{% endfor %}</span>
+                {% for video in videos %}
 
-    {% endfor %}
+                    {#<span>{% for sound in video.sounds %}{{ sound.name }}{% if not loop.last %},&nbsp;{% endif %}{% endfor %}</span>#}
+                {% endfor %}
+
+            </div>
+    </div>
 
 {% endblock %}
 

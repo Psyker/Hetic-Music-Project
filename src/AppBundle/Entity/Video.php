@@ -42,7 +42,7 @@ class Video
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=1000)
+     * @ORM\Column(name="description", type="string", length=3000)
      */
     private $description;
     /**
@@ -57,6 +57,18 @@ class Video
      * @ORM\Column(name="annee_realisation", type="integer")
      */
     private $annee_realisation;
+
+    /**
+     * @var string
+     * @ORM\Column(name="thumbnailName", type="string", length=255)
+     */
+    private $thumbnailName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="product_thumbnail", fileNameProperty="thumbnailName")
+     */
+    private $thumbnailFile;
     /**
      * @var string
      *
@@ -87,6 +99,12 @@ class Video
     private $updatedAt;
 
     /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAtpicture;
+
+    /**
      * @var \DateTime
      * @ORM\Column(type="datetime")
      */
@@ -95,6 +113,48 @@ class Video
     public function __construct()
     {
         $this->videos = new ArrayCollection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getThumbnailName()
+    {
+        return $this->thumbnailName;
+    }
+
+
+    /**
+     * @param string $thumbnailName
+     */
+    public function setThumbnailName($thumbnailName)
+    {
+        $this->thumbnailName = $thumbnailName;
+    }
+
+    /**
+     * @return File
+     */
+    public function getThumbnailFile()
+    {
+        return $this->thumbnailFile;
+    }
+
+    /**
+     * @return Video
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
+     */
+    public function setThumbnailFile($video = null)
+    {
+        if ($video) {
+            $this->thumbnailFile = $video;
+
+            if ($video instanceof UploadedFile) {
+                $this->updatedAtpicture = new \DateTime();
+            }
+        }
+        return $this;
+
     }
 
     /**
@@ -112,7 +172,6 @@ class Video
     {
         $this->updatedAtwebm = $updatedAtwebm;
     }
-
 
 
     /**
@@ -147,7 +206,6 @@ class Video
     {
         $this->urlVideowebm = $urlVideowebm;
     }
-
 
 
     /**
@@ -293,6 +351,23 @@ class Video
     {
         $this->annee_realisation = $annee_realisation;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAtpicture()
+    {
+        return $this->updatedAtpicture;
+    }
+
+    /**
+     * @param mixed $updatedAtpicture
+     */
+    public function setUpdatedAtpicture($updatedAtpicture)
+    {
+        $this->updatedAtpicture = $updatedAtpicture;
+    }
+
 
     /**
      *

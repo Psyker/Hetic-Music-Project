@@ -46,10 +46,10 @@ class AdminController extends Controller
      * @Route("/video/edit/{id}", name="editVideo")
      * @Method({"GET"})
      */
-    public function editProjectAction(Request $request, Video $video, Sound $sound)
+    public function editVideoAction(Request $request, Video $video, Sound $sound)
     {
 
-        if (!$video) throw $this->createNotFoundException('Le projet n\'a pas été trouvé');
+        if (!$video) throw $this->createNotFoundException('La vidéo n\'a pas été trouvé');
         return $this->render('admin/videos/edit.html.twig', [
             'video' => $video,
             'sounds' => $sound

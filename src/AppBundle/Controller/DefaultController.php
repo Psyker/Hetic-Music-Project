@@ -35,4 +35,16 @@ class DefaultController extends Controller
             'sounds' => $sound
         ));
     }
+
+    /**
+     * @Route(/start/extrait/{id}", name="startextrait")
+     */
+    public function showVideoAction(Request $request, Video $video, Sound $sound)
+    {
+        return $this->render('default/extrait.html.twig', array(
+            'video' => $video,
+            'sound' => $sound
+        ));
+    }
 }
+
