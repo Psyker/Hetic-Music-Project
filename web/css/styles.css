@@ -1,3 +1,371 @@
-.margin {
-    margin-top: 100px;
+/* TABLE ====================================================================
+
+    * Header             * Sound style
+    * Index              * Button
+    * Play
+
+   ========================================================================== */
+
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600';
+
+/* ==========================================================================
+    Header
+   ========================================================================== */
+
+.hidden {
+    display: none;
+}
+body {
+    font-family: 'Source Sans Pro';
+    font-size: 23px;
+    font-weight: 600;
+    overflow: hidden;
+}
+#myVid {
+    width: 100vw;
+    position: absolute;
+    z-index: -99;
+}
+.index, .scene {
+    background-color: #0D0D0D;
+}
+.scene {
+    overflow: hidden;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+header, footer {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 45px;
+    background-color: #0d0d0d;
+}
+header {
+    top: 0;
+}
+footer {
+    bottom: 0;
+}
+header h1 {
+    float: left;
+    margin: 21px 0 0 41px;
+}
+header h1 img {
+    height: 40px;
+}
+header .menu {
+    z-index: 999;
+    position: absolute;
+    right: 0;
+}
+header ul {
+    line-height: 90px;
+    float: left;
+}
+header ul li {
+    display: inline-block;
+}
+header .more {
+    height: 24px;
+    margin-right: 31px;
+}
+header ul:last-child li:last-child {
+    width: 90px;
+    height: 110px;
+    border-left: 1px solid #dcdcdc;
+}
+header .full-screen {
+    height: 26px;
+    padding: 31px 0 0 31px;
+}
+
+/* ==========================================================================
+    Index
+   ========================================================================== */
+
+.concept {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 615px;
+    text-align: center;
+    top: 180px;
+    color: #fff;
+}
+.concept h1 {
+    font-size: 72px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.concept p {
+    font-size: 22px;
+    line-height: 27px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/* ==========================================================================
+    Scenes
+   ========================================================================== */
+
+.scenes-selector {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 4000px;
+    text-align: center;
+    top: 180px;
+    color: #fff;
+}
+.scenes-selector img {
+    display: inline-block;
+    width: 518px;
+    padding-left: 100px;
+}
+.scenes-selector img:first-child {
+    padding-left: 0px;
+}
+
+/* ==========================================================================
+    Play
+   ========================================================================== */
+
+.previous-scene, .next-scene {
+    position: absolute;
+    width: 90px;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, .10);
+}
+.previous-scene {
+    left: 0;
+}
+.previous-scene:hover {
+    cursor: url("../img/cursor-left.png"), pointer;
+}
+.next-scene {
+    right: 0;
+}
+.next-scene:hover {
+    cursor: url("../img/cursor-right.png") 62 0, pointer;
+}
+.sounds, .playing {
+    float: left;
+}
+.sounds {
+    position: absolute;
+    right: 47%;
+    bottom: 103px;
+    text-align: center;
+}
+.sounds li {
+    cursor: pointer;
+}
+.sounds li:first-child {
+    margin-bottom: 8px;
+}
+.sounds li:last-child {
+    margin-top: 8px;
+}
+.sound {
+    font-size: 16px;
+    color: rgba(255, 255, 255, .6);
+}
+.active {
+    font-size: 20px;
+    color: #fff;
+}
+.playing {
+    padding-top: 22px;
+    position: absolute;
+    right: 38%;
+    bottom: 100px;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    border: 3px solid #fff;
+    border-radius: 100%;
+}
+.player {
+    height: 18px;
+    width: 14px;
+    margin: 0 auto;
+    background-image: url(../img/pause_button.png);
+    background-size: 14px 18px;;
+    background-repeat: no-repeat;
+}
+.player2 {
+    height: 18px;
+    width: 14px;
+    margin: 0 auto;
+    background-image: url(../img/play_button.png);
+    background-size: 14px 18px;;
+    background-repeat: no-repeat;
+}
+.film-information {
+    position: absolute;
+    right: -400px;
+    top: 0;
+    height: 100vh;
+    width: 400px;
+    background-color: #0D0D0D;
+}
+
+/* ==========================================================================
+    Sound style
+   ========================================================================== */
+
+.sound-style {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 90px;
+    height: 100px;
+    border-left: 1px solid #dcdcdc;
+}
+.playing-icon {
+    font-size: 10px;
+    position: absolute;
+    right: 33px;
+    bottom: 33px;
+    display: flex;
+    overflow-y: hidden;
+    height: 26px;
+    margin: -2em 0 0;
+    align-items: flex-end;
+    justify-content: center;
+}
+.playing-icon .bar {
+    width: .2em;
+    margin: 0 .1em;
+    animation: playing 0ms -800ms linear infinite alternate;
+    background: #fff;
+}
+.playing-icon .bar:nth-child(5n+1) {
+    animation-duration: 399ms;
+}
+.playing-icon .bar:nth-child(5n+2) {
+    animation-duration: 435ms;
+}
+.playing-icon .bar:nth-child(5n+3) {
+    animation-duration: 489ms;
+}
+.playing-icon .bar:nth-child(5n+4) {
+    animation-duration: 446ms;
+}
+.playing-icon .bar:nth-child(5n+5) {
+    animation-duration: 450ms;
+}
+@keyframes playing {
+    0% {
+        height: .2em;
+        opacity: 1;
+    }
+    100% {
+        height: 4em;
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+    Button
+   ========================================================================== */
+
+button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    background: none;
+    color: #fff;
+    position: relative;
+    outline: none;
+    border: none;
+    height: 70px;
+    width: 260px;
+    font-size: 20px;
+    z-index: 2;
+    -webkit-transition: .01s .23s ease-out all;
+    transition: .01s .23s ease-out all;
+    overflow: hidden;
+    text-align: center;
+}
+button a {
+    color: #fff;
+}
+button:before {
+    border-radius: 2px;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #151515;
+    z-index: -1;
+    -webkit-transition: .3s ease-in all;
+    transition: .3s ease-in all;
+}
+button:after {
+    border-radius: 2px;
+    content: '';
+    position: absolute;
+    left: -5%;
+    top: 5%;
+    height: 90%;
+    width: 5%;
+    background: white;
+    z-index: -1;
+    -webkit-transition: .4s .02s ease-in all;
+    transition: .4s .02s ease-in all;
+}
+button:hover {
+    cursor: url("../img/cursor-right.png"), pointer;
+    color: transparent;
+}
+button a:hover {
+    cursor: url("../img/cursor-right.png"), pointer;
+}
+button:hover:before {
+    left: 100%;
+    width: 25%;
+}
+button:hover:after {
+    left: 100%;
+    width: 70%;
+}
+
+/* ==========================================================================
+    Carrousel
+   ========================================================================== */
+
+.extra-slider, .extra-slider .wrapper {
+    position: relative;
+}
+.extra-slider .wrapper {
+    overflow: hidden;
+}
+.extra-slider ul {
+    display: block;
+    list-style: none;
+    position: relative;
+}
+.extra-slider li {
+    display: block;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.extra-slider li.extra-slider-first {
+    position: relative;
 }

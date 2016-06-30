@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1349309841">
+  <component name="DataSourceManagerImpl" format="xml" hash="3329149991">
     <data-source source="LOCAL" name="MySQL - symfony_project_hetic@localhost" uuid="c63531c4-2ca9-4f49-a503-7fdd59142e76">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

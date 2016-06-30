@@ -1,6 +1,29 @@
 {% extends 'base.html.twig' %}
-
+{% block class %}class="play"{% endblock %}
 {% block body %}
+    <video id="myVid" autoplay>
+        <source src="{{ asset('videos/products_videowebm/' ~ video.UrlVideowebm) }}" type="video/webm">
+        <source src="../extraitsSara/fallen/fallen2.mp4" type="video/mp4">
+    </video>
 
+    <div class="screen">
+        <div class="previous-scene"></div>
+        <div class="next-scene"></div>
+        <div class="sounds">
+            <ul>
+                <li class="sound active" data-id="2">Etta James - At Last</li>
+                <li class="sound" data-id="1">Frankie Chan Fan-Kei - God</li>
+                <li class="sound" data-id="3">Blind Digital Citizen - War</li>
+            </ul>
+        </div>
+        <div class="playing"><div class="player"></div></div>
+    </div>
+
+    <div class="film-information">
+        <h1></h1>
+        <h2></h2>
+        <h2></h2>
+        <p></p>
+    </div>
 {% endblock %}
 
