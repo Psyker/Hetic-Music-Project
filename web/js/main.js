@@ -41,6 +41,9 @@ $(document).ready(function() {
     var video = document.getElementById("myVid"),
         audios = {};
 
+    var webm = $('#webm');
+    webm.volume = 0.0;
+
     $(".sound").each(function (key, el) {
         var $el = $(el);
         var id = $el.data("id"),
@@ -105,15 +108,17 @@ $(document).ready(function() {
     });
 
     // Synchroniser restart loop video et son
-    video.addEventListener("ended", function() {
-        $.each(audios, function (key, el) {
-            el.currentTime = 0;
-            el.play();
-        });
-
-        this.play();
-    }, false);
-
+    if (video != null) {
+        video.addEventListener("ended", function() {
+            $.each(audios, function (key, el) {
+                el.currentTime = 0;
+                el.play();
+            });
+            this.pause();
+            this.currentTime = 0;
+            this.load();
+        }, false);
+    }
     //vidéo en plein ecran
     $(".full-screen").on('click', function() {
         var elem = document.getElementById("myVid");

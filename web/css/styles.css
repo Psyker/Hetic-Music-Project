@@ -22,6 +22,7 @@ body {
     font-size: 23px;
     font-weight: 600;
     overflow: hidden;
+    background-color: black;
 }
 #myVid {
     width: 100vw;
@@ -139,7 +140,7 @@ h2{
 .firstimg{
     margin-left: 20%;
 }
-img {
+#sliderWrapper img {
     position: relative;
     top: 50%;
     padding-left: 100px;
