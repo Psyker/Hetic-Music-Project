@@ -29,7 +29,7 @@ body {
     z-index: -99;
 }
 .index, .scene {
-    background-color: #0D0D0D;
+    background-color: black;
 }
 .scene {
     overflow: hidden;
@@ -45,7 +45,7 @@ header, footer {
     position: fixed;
     width: 100%;
     height: 45px;
-    background-color: #0d0d0d;
+    background-color: black;
 }
 header {
     top: 0;
@@ -117,28 +117,66 @@ header .full-screen {
 
 /* ==========================================================================
     Scenes
-   ========================================================================== */
+========================================================================== */
+h2{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    position:relative;
+    color: #ffffff;
+    top:175px;
+    margin-left: 25%;
 
-.scenes-selector {
+}
+#sliderWrapper {
+    left: 40px;
+    white-space: nowrap !important;
+    height: 100%;
+    position: relative;
+    background: #000000;
+    overflow-x: hidden;
+}
+.firstimg{
+    margin-left: 20%;
+}
+img {
+    position: relative;
+    top: 50%;
+    padding-left: 100px;
+
+
+}
+#next {
+    height: 100%;
     position: absolute;
-    margin: 0 auto;
-    left: 0;
     right: 0;
-    width: 4000px;
+    background: #000000;
+    z-index: 1;
+}
+#next img{
+    opacity: 0;
+}
+#prev {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: #000000;
+    z-index: 1;
+}
+#prev img{
+    opacity: 0;
+}
+#imageSlider {
+    position: relative;
     text-align: center;
-    top: 180px;
+    top: 300px;
     color: #fff;
+    width: 100%;
+
+    overflow: hidden;
 }
-.scenes-selector h1{
-    color: #FFFFF;
-}
-.scenes-selector img {
-    display: inline-block;
-    width: 518px;
-    padding-left: 10px;
-}
-.scenes-selector img:first-child {
-    padding-left: 50%;
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* ==========================================================================
@@ -349,30 +387,3 @@ button:hover:after {
     left: 100%;
     width: 70%;
 }
-
-/* ==========================================================================
-    Carrousel
-
-
-.extra-slider, .extra-slider .wrapper {
-    position: relative;
-}
-.extra-slider .wrapper {
-    overflow: hidden;
-}
-.extra-slider ul {
-    display: block;
-    list-style: none;
-    position: relative;
-}
-.extra-slider li {
-    display: block;
-    list-style: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.extra-slider li.extra-slider-first {
-    position: relative;
-}
-========================================================================== */

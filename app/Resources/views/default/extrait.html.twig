@@ -11,10 +11,9 @@
         <a href="{{ path('startExtrait', {'id': video.id +1}) }}">  <div class="next-scene"></div></a>
         <div class="sounds">
             <ul>
-                {% for sound in video.sounds %}
-                    <li class="sound {% if loop.first %}active{% endif %}" data-src="{{ sound.urlSound }}"
-                        data-id="{% if loop.first %}2{% elseif loop.last %}
-                        3{% else %}1{% endif %}">{{ sound.compositeur }}
+                {% for key, sound in video.sounds %}
+                    <li class="sound {% if loop.first %}active{% endif %}" data-src="{{asset('videos/products_sounds/' ~ sound.urlSound ) }}"
+                        data-id="{{ key + 1 }}">{{ sound.compositeur }}
                         - {{ sound.name }}</li>
                 {% endfor %}
 

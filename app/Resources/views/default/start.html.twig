@@ -2,15 +2,22 @@
 {% block class %}class="scene"{% endblock %}
 {% block body %}
 
-    <div class="scenes-selector">
-        <h1>Choisissez un extrait et jouez les différentes bandes sonores</h1>
-        <div id="owl-example" class="owl-carousel">
+    <h2 class="choose">Choisissez votre film préféré et créez votre propre bande son</h2>
+
+
+    <div id="imageSlider">
+        <div id="prev">
+            <img src="img/ico/left.png" width="10px" />
+        </div>
+        <div id="next">
+            <img src="img/ico/right.png" width="10px" />
+        </div>
+        <div id="sliderWrapper">
+
             {% for video in videos %}
                 <a href="{{ path('startExtrait', {'id': video.id })}}"><img src="{{ asset('videos/products_thumbnail/' ~ video.thumbnailName) }}" alt=""></a>
             {% endfor %}
         </div>
-        <div class="selector"></div>
-        <p>Inception (2010) - Christopher Nolan</p>
     </div>
 
                 {#{% for video in videos %}#}
