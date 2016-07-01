@@ -1,8 +1,17 @@
 {% extends 'base.html.twig' %}
-
+{% block class %}class="scene"{% endblock %}
 {% block body %}
 
-
+    <div class="scenes-selector">
+        <h1>Choisissez un extrait et jouez les différentes bandes sonores</h1>
+        <div id="owl-example" class="owl-carousel">
+            {% for video in videos %}
+                <a href="{{ path('startExtrait', {'id': video.id })}}"><img src="{{ asset('videos/products_thumbnail/' ~ video.thumbnailName) }}" alt=""></a>
+            {% endfor %}
+        </div>
+        <div class="selector"></div>
+        <p>Inception (2010) - Christopher Nolan</p>
+    </div>
 
                 {#{% for video in videos %}#}
 

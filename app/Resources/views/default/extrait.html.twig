@@ -3,20 +3,26 @@
 {% block body %}
     <video id="myVid" autoplay>
         <source src="{{ asset('videos/products_videowebm/' ~ video.UrlVideowebm) }}" type="video/webm">
-        <source src="../extraitsSara/fallen/fallen2.mp4" type="video/mp4">
+        <source src="{{ asset('videos/products_video/' ~ video.UrlVideo) }}" type="video/mp4">
     </video>
 
     <div class="screen">
-        <div class="previous-scene"></div>
-        <div class="next-scene"></div>
+        <a href="{{ path('startExtrait', {'id': video.id -1}) }}">  <div class="previous-scene"></div></a>
+        <a href="{{ path('startExtrait', {'id': video.id +1}) }}">  <div class="next-scene"></div></a>
         <div class="sounds">
             <ul>
-                <li class="sound active" data-id="2">Etta James - At Last</li>
-                <li class="sound" data-id="1">Frankie Chan Fan-Kei - God</li>
-                <li class="sound" data-id="3">Blind Digital Citizen - War</li>
+                {% for sound in video.sounds %}
+                    <li class="sound {% if loop.first %}active{% endif %}" data-src="{{ sound.urlSound }}"
+                        data-id="{% if loop.first %}2{% elseif loop.last %}
+                        3{% else %}1{% endif %}">{{ sound.compositeur }}
+                        - {{ sound.name }}</li>
+                {% endfor %}
+
             </ul>
         </div>
-        <div class="playing"><div class="player"></div></div>
+        <div class="playing">
+            <div class="player"></div>
+        </div>
     </div>
 
     <div class="film-information">

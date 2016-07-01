@@ -11,7 +11,9 @@
 /* ==========================================================================
     Header
    ========================================================================== */
-
+::-webkit-media-controls {
+    display:none !important;
+}
 .hidden {
     display: none;
 }
@@ -96,6 +98,7 @@ header .full-screen {
     width: 615px;
     text-align: center;
     top: 180px;
+    left: 0;
     color: #fff;
 }
 .concept h1 {
@@ -126,13 +129,16 @@ header .full-screen {
     top: 180px;
     color: #fff;
 }
+.scenes-selector h1{
+    color: #FFFFF;
+}
 .scenes-selector img {
     display: inline-block;
     width: 518px;
-    padding-left: 100px;
+    padding-left: 10px;
 }
 .scenes-selector img:first-child {
-    padding-left: 0px;
+    padding-left: 50%;
 }
 
 /* ==========================================================================
@@ -346,7 +352,7 @@ button:hover:after {
 
 /* ==========================================================================
     Carrousel
-   ========================================================================== */
+
 
 .extra-slider, .extra-slider .wrapper {
     position: relative;
@@ -369,3 +375,4 @@ button:hover:after {
 .extra-slider li.extra-slider-first {
     position: relative;
 }
+========================================================================== */

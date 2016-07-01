@@ -7,11 +7,13 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('owl.carousel/owl-carousel/owl.carousel.css') }}">
+        <link rel="stylesheet" href="{{ asset('owl.carousel/owl-carousel/owl.theme.css') }}">
     </head>
     <body {% block class %} class="index" {% endblock %}>
     <header>
         <h1>
-            <a href=""><img src="{{ asset('img/logo.png') }}" alt="OST Sensitive"></a>
+            <a href="{{ path('start') }}"><img src="{{ asset('img/logo.png') }}" alt="OST Sensitive"></a>
         </h1>
         <div class="menu">
             <ul>
@@ -41,6 +43,8 @@
     </footer>
         <script   src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
         <script   src="{{ asset('js/main.js') }}"></script>
+        <script   src="{{ asset('owl.carousel/owl-carousel/owl.carousel.min.js') }}"></script>
+
 
     </body>
 </html>

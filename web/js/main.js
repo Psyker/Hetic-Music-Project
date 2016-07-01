@@ -3,21 +3,21 @@
 var snd1 = new Audio();
 var src1 = document.createElement("source");
 src1.type = "audio/mp3";
-src1.src = "../extraitsSara/fallen/fallen2.mp3";
+src1.src = "fallen-exemple-play/fallen/fallen2.mp3";
 snd1.appendChild(src1);
 snd1.loop = true;
 
 var snd2 = new Audio();
 var src2 = document.createElement("source");
 src2.type = "audio/mp3";
-src2.src = "../extraitsSara/fallen/fallenettajames.mp3";
+src2.src = "fallen-exemple-play/fallen/fallenettajames.mp3";
 snd2.appendChild(src2);
 snd2.loop = true;
 
 var snd3 = new Audio();
 var src3 = document.createElement("source");
 src3.type = "audio/mp3";
-src3.src = "../extraitsSara/fallen/fallenronetrash.mp3";
+src3.src = "fallen-exemple-play/fallen/fallenronetrash.mp3";
 snd3.appendChild(src3);
 snd3.loop = true;
 
@@ -38,12 +38,35 @@ function playSong(el) {
 }
 
 // play - stop au click
+
+
 $(document).ready(function() {
+
+    $("#owl-example").owlCarousel({
+
+    });
+
     playSong(snd1);
     muteSong(snd2);
     playSong(snd2);
     muteSong(snd3);
     playSong(snd3);
+
+    $("#myVid").on('click', function () {
+        var video = document.querySelector('#myVid');
+
+        if (video.paused) {
+            video.play();
+            snd1.play();
+            snd2.play();
+            snd3.play();
+        } else {
+            video.pause();
+            snd1.pause();
+            snd2.pause();
+            snd3.pause();
+        }
+    });
 
     $(".player").on('click', function() {
         var video = document.querySelector('#myVid');
@@ -89,16 +112,16 @@ $(document).ready(function() {
         snd3.play();
     }, false);
 
-    ////vidéo en plein ecran
-    //
-    //$(".full-screen").on(click, function(
-    //var elem = document.getElementById("myvid");
-    //if (elem.requestFullscreen) {
-    //  elem.requestFullscreen();
-    //} else if (elem.mozRequestFullScreen) {
-    //  elem.mozRequestFullScreen();
-    //} else if (elem.webkitRequestFullscreen) {
-    //  elem.webkitRequestFullscreen();
-    //}
-    //	));
+    //vidéo en plein ecran
+
+    $(".full-screen").on('click', function() {
+        var elem = document.getElementById("myVid");
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+    });
 });
