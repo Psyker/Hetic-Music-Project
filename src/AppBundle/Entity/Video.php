@@ -76,17 +76,8 @@ class Video
      */
     private $urlVideo;
 
-    /**
-     * @var string
-     * @ORM\Column(name="urlVideowebm", type="string", length=255)
-     */
-    private $urlVideowebm;
 
-    /**
-     * @Vich\UploadableField(mapping="product_videowebm", fileNameProperty="urlVideowebm")
-     * @var File
-     */
-    private $videoFilewebm;
+
     /**
      * @Vich\UploadableField(mapping="product_video", fileNameProperty="urlVideo")
      * @var File
@@ -104,11 +95,7 @@ class Video
      */
     private $updatedAtpicture;
 
-    /**
-     * @var \DateTime
-     * @ORM\Column(type="datetime")
-     */
-    private $updatedAtwebm;
+
 
     public function __construct()
     {
@@ -157,21 +144,8 @@ class Video
 
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getUpdatedAtwebm()
-    {
-        return $this->updatedAtwebm;
-    }
 
-    /**
-     * @param \DateTime $updatedAtwebm
-     */
-    public function setUpdatedAtwebm($updatedAtwebm)
-    {
-        $this->updatedAtwebm = $updatedAtwebm;
-    }
+
 
 
     /**
@@ -190,47 +164,6 @@ class Video
         $this->updatedAt = $updatedAt;
     }
 
-    /**
-     * @return string
-     */
-    public function getUrlVideoWebm()
-    {
-        return $this->urlVideowebm;
-    }
-
-    /**
-     * @param string $urlVideowebm
-     * @return Video
-     */
-    public function setUrlVideoWebm($urlVideowebm)
-    {
-        $this->urlVideowebm = $urlVideowebm;
-    }
-
-
-    /**
-     * @return File
-     */
-    public function getVideoFileWebm()
-    {
-        return $this->videoFilewebm;
-    }
-
-    /**
-     * @return Video
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $video
-     */
-    public function setVideoFilewebm($video = null)
-    {
-        if ($video) {
-            $this->videoFilewebm = $video;
-
-            if ($video instanceof UploadedFile) {
-                $this->updatedAtwebm = new \DateTime();
-            }
-        }
-        return $this;
-    }
 
     /**
      * @return File
