@@ -22,7 +22,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class AdminController extends Controller
 {
-
     /**
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -156,8 +155,6 @@ class AdminController extends Controller
         $sound->setName($request->get('name'));
         $sound->setCompositeur($request->get('compositeur'));
         $sound->setRealisationAnnee($request->get('realisation_annee'));
-
-
         $this->getDoctrine()->getManager()->flush();
         return $this->redirectToRoute('soundsList', ['sound' => $sound]);
 
